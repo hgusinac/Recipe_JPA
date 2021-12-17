@@ -8,13 +8,16 @@ import java.util.Set;
 public class Recipe {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(updatable = false)
     private int id;
     private String recipeName;
 
     @OneToMany(
             cascade = {CascadeType.DETACH,CascadeType.REFRESH},
             fetch = FetchType.LAZY,
-            orphanRemoval = true
+            orphanRemoval = true,
+            mappedBy = "recipe"
     )
     private List<RecipeIngredient> recipeIngredients;
 
@@ -28,7 +31,9 @@ public class Recipe {
 
     @ManyToMany(
             cascade = {CascadeType.DETACH,CascadeType.REFRESH},
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            mappedBy = "recipes"
+
     )
     private Set<RecipeCategory> categories;
 

@@ -1,9 +1,6 @@
 package com.example.recipe_jpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class RecipeInstruction {
@@ -11,6 +8,7 @@ public class RecipeInstruction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(length = 2000)
     private String instructions;
 
     public RecipeInstruction(int id, String instructions) {

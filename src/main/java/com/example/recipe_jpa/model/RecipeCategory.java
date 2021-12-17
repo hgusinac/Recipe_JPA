@@ -22,6 +22,12 @@ public class RecipeCategory {
     )
     private Set<Recipe> recipes;
 
+    public RecipeCategory(int id, String category, Set<Recipe> recipes) {
+        this.id = id;
+        this.category = category;
+        this.recipes = recipes;
+    }
+
     public RecipeCategory(String category) {
         this.category = category;
     }

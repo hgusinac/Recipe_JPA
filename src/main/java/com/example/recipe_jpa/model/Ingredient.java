@@ -1,15 +1,15 @@
 package com.example.recipe_jpa.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Ingredient {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(updatable = false)
     private int id;
+    @Column(unique = true)
     private String ingredientName;
 
     public Ingredient(int id, String ingredientName) {
