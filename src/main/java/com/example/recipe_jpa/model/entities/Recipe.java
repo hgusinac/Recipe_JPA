@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.model;
+package com.example.recipe_jpa.model.entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(updatable = false)
-    private int id;
+    private String id;
     private String recipeName;
 
     @OneToMany(
@@ -35,9 +35,9 @@ public class Recipe {
             mappedBy = "recipes"
 
     )
-    private Set<RecipeCategory> categories;
+    private List<RecipeCategory> categories;
 
-    public Recipe(String recipeName, List<RecipeIngredient> recipeIngredients, RecipeInstruction recipeInstruction, Set<RecipeCategory> categories) {
+    public Recipe(String recipeName, List<RecipeIngredient> recipeIngredients, RecipeInstruction recipeInstruction, List<RecipeCategory> categories) {
         this.recipeName = recipeName;
         this.recipeIngredients = recipeIngredients;
         this.recipeInstruction = recipeInstruction;
@@ -47,11 +47,11 @@ public class Recipe {
     public Recipe() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -79,11 +79,11 @@ public class Recipe {
         this.recipeInstruction = recipeInstruction;
     }
 
-    public Set<RecipeCategory> getCategories() {
+    public List<RecipeCategory> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<RecipeCategory> categories) {
+    public void setCategories(List<RecipeCategory> categories) {
         this.categories = categories;
     }
 }

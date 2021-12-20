@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.model;
+package com.example.recipe_jpa.model.entities;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ public class RecipeIngredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private String id;
     private double amount;
     private Measurment measurment;
 
@@ -35,13 +35,14 @@ public class RecipeIngredient {
     public RecipeIngredient() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
+
 
     public double getAmount() {
         return amount;

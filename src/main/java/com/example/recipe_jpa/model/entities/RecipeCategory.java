@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.model;
+package com.example.recipe_jpa.model.entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Set;
 public class RecipeCategory {
 
     @Id
-    private int id;
+    private String id;
     private String category;
 
     @ManyToMany(
@@ -20,9 +20,9 @@ public class RecipeCategory {
             joinColumns = @JoinColumn(name = "fk_recipe_id",table = "recipe_recipe_category"),
             inverseJoinColumns = @JoinColumn(name = "fk_recipe_category_id",table = "recipe_recipe_category")
     )
-    private Set<Recipe> recipes;
+    private List<Recipe> recipes;
 
-    public RecipeCategory(int id, String category, Set<Recipe> recipes) {
+    public RecipeCategory(String id, String category, List<Recipe> recipes) {
         this.id = id;
         this.category = category;
         this.recipes = recipes;
@@ -35,11 +35,11 @@ public class RecipeCategory {
     public RecipeCategory() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -51,11 +51,11 @@ public class RecipeCategory {
         this.category = category;
     }
 
-    public Set<Recipe> getRecipes() {
+    public List<Recipe> getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(Set<Recipe> recipes) {
+    public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
 }
