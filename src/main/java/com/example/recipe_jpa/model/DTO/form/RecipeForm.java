@@ -1,6 +1,4 @@
-package com.example.recipe_jpa.model.DTO;
-
-import com.example.recipe_jpa.model.entities.RecipeInstruction;
+package com.example.recipe_jpa.model.DTO.form;
 
 import java.io.Serializable;
 import java.util.List;

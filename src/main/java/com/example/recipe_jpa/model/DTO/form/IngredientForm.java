@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.model.DTO;
+package com.example.recipe_jpa.model.DTO.form;
 
 import org.springframework.validation.annotation.Validated;
 

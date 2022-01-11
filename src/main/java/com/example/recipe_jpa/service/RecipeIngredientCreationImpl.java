@@ -1,12 +1,16 @@
 package com.example.recipe_jpa.service;
 
 import com.example.recipe_jpa.database.RecipeIngredientDAO;
-import com.example.recipe_jpa.model.DTO.RecipeIngredientForm;
+import com.example.recipe_jpa.model.DTO.form.RecipeIngredientForm;
 import com.example.recipe_jpa.model.entities.RecipeIngredient;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class RecipeIngredientCreationImpl implements RecipeIngredientCreation{
 
 

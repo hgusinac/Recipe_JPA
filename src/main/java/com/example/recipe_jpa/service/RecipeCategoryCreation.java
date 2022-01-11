@@ -1,6 +1,6 @@
 package com.example.recipe_jpa.service;
 
-import com.example.recipe_jpa.model.DTO.RecipeCategoryForm;
+import com.example.recipe_jpa.model.DTO.form.RecipeCategoryForm;
 import com.example.recipe_jpa.model.entities.RecipeCategory;
 
 import java.util.List;

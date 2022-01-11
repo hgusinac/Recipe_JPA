@@ -3,7 +3,7 @@ package com.example.recipe_jpa.service;
 import com.example.recipe_jpa.database.RecipeCategoryDAO;
 import com.example.recipe_jpa.database.RecipeDAO;
 import com.example.recipe_jpa.database.RecipeIngredientDAO;
-import com.example.recipe_jpa.model.DTO.RecipeForm;
+import com.example.recipe_jpa.model.DTO.form.RecipeForm;
 import com.example.recipe_jpa.model.entities.Recipe;
 import com.example.recipe_jpa.model.entities.RecipeCategory;
 import com.example.recipe_jpa.model.entities.RecipeIngredient;

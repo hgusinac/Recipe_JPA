@@ -1,7 +1,7 @@
 package com.example.recipe_jpa.service;
 
 import com.example.recipe_jpa.database.RecipeCategoryDAO;
-import com.example.recipe_jpa.model.DTO.RecipeCategoryForm;
+import com.example.recipe_jpa.model.DTO.form.RecipeCategoryForm;
 import com.example.recipe_jpa.model.entities.RecipeCategory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

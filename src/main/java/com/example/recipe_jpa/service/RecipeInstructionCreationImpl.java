@@ -1,7 +1,7 @@
 package com.example.recipe_jpa.service;
 
 import com.example.recipe_jpa.database.RecipeInstructionDAO;
-import com.example.recipe_jpa.model.DTO.RecipeInstructionForm;
+import com.example.recipe_jpa.model.DTO.form.RecipeInstructionForm;
 import com.example.recipe_jpa.model.entities.RecipeInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
