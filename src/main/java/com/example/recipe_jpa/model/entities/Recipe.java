@@ -1,14 +1,20 @@
 package com.example.recipe_jpa.model.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
+
+import static com.example.recipe_jpa.model.entities.constants.EntityConstants.GENERATOR;
+import static com.example.recipe_jpa.model.entities.constants.EntityConstants.UUID_GENERATOR;
 
 @Entity
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = GENERATOR)
+    @GenericGenerator(name = GENERATOR, strategy = UUID_GENERATOR)
     @Column(updatable = false)
     private String id;
     private String recipeName;

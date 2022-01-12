@@ -1,12 +1,12 @@
-package com.example.recipe_jpa.service;
+package com.example.recipe_jpa.service.entity;
 
 import com.example.recipe_jpa.model.DTO.form.RecipeIngredientForm;
 import com.example.recipe_jpa.model.entities.RecipeIngredient;
 
 import java.util.List;
 
-public interface RecipeIngredientCreation {
-    RecipeIngredient save(RecipeIngredientForm recipeIngredientForm);
+public interface RecipeIngredientEntityService {
+    RecipeIngredient create(RecipeIngredientForm recipeIngredientForm);
 
     RecipeIngredient findById(String id);
 

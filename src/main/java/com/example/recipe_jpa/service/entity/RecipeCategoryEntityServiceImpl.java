@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.service;
+package com.example.recipe_jpa.service.entity;
 
 import com.example.recipe_jpa.database.RecipeCategoryDAO;
 import com.example.recipe_jpa.model.DTO.form.RecipeCategoryForm;
@@ -11,16 +11,16 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class RecipeCategoryCreationImpl implements RecipeCategoryCreation{
+public class RecipeCategoryEntityServiceImpl implements RecipeCategoryEntityService {
 
    public final RecipeCategoryDAO recipeCategoryDAO;
 
-    public RecipeCategoryCreationImpl(RecipeCategoryDAO recipeCategoryDAO) {
+    public RecipeCategoryEntityServiceImpl(RecipeCategoryDAO recipeCategoryDAO) {
         this.recipeCategoryDAO = recipeCategoryDAO;
     }
 
     @Override
-    public RecipeCategory save(RecipeCategoryForm recipeCategoryForm) {
+    public RecipeCategory create(RecipeCategoryForm recipeCategoryForm) {
         RecipeCategory recipeCategory = new RecipeCategory();
 
         recipeCategory.setId(recipeCategory.getId());

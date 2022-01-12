@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.service;
+package com.example.recipe_jpa.service.entity;
 
 import com.example.recipe_jpa.database.RecipeInstructionDAO;
 import com.example.recipe_jpa.model.DTO.form.RecipeInstructionForm;
@@ -12,17 +12,17 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class RecipeInstructionCreationImpl implements RecipeInstructionCreation{
+public class RecipeInstructionEntityServiceImpl implements RecipeInstructionEntityService {
 
     private final RecipeInstructionDAO recipeInstructionDAO;
 
     @Autowired
-    public RecipeInstructionCreationImpl(RecipeInstructionDAO recipeInstructionDAO) {
+    public RecipeInstructionEntityServiceImpl(RecipeInstructionDAO recipeInstructionDAO) {
         this.recipeInstructionDAO = recipeInstructionDAO;
     }
 
     @Override
-    public RecipeInstruction save(RecipeInstructionForm recipeInstructionForm) {
+    public RecipeInstruction create(RecipeInstructionForm recipeInstructionForm) {
         RecipeInstruction recipeInstruction = new RecipeInstruction();
 
         recipeInstruction.setId(recipeInstruction.getId());

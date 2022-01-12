@@ -1,4 +1,4 @@
-package com.example.recipe_jpa.service;
+package com.example.recipe_jpa.service.entity;
 
 import com.example.recipe_jpa.database.RecipeCategoryDAO;
 import com.example.recipe_jpa.database.RecipeDAO;
@@ -17,27 +17,27 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class RecipeCreationImpl implements RecipeCreation{
+public class RecipeEntityServiceImpl implements RecipeEntityService {
 
 
     private final RecipeDAO recipeDAO;
-    private final RecipeInstructionCreation recipeInstructionCreation;
+    private final RecipeInstructionEntityService recipeInstructionEntityService;
     private  final RecipeCategoryDAO recipeCategoryDAO;
     private final RecipeIngredientDAO recipeIngredientDAO;
 
     @Autowired
-    public RecipeCreationImpl(RecipeDAO recipeDAO, RecipeInstructionCreation recipeInstructionCreation, RecipeCategoryDAO recipeCategoryDAO, RecipeIngredientDAO recipeIngredientDAO) {
+    public RecipeEntityServiceImpl(RecipeDAO recipeDAO, RecipeInstructionEntityService recipeInstructionEntityService, RecipeCategoryDAO recipeCategoryDAO, RecipeIngredientDAO recipeIngredientDAO) {
         this.recipeDAO = recipeDAO;
-        this.recipeInstructionCreation = recipeInstructionCreation;
+        this.recipeInstructionEntityService = recipeInstructionEntityService;
         this.recipeCategoryDAO = recipeCategoryDAO;
         this.recipeIngredientDAO = recipeIngredientDAO;
     }
 
     @Override
-    public Recipe save(RecipeForm recipeForm) {
+    public Recipe create(RecipeForm recipeForm) {
         Recipe recipe = new Recipe();
 
-        RecipeInstruction recipeInstruction = recipeInstructionCreation.save(recipeForm.getRecipeInstructionForm());
+        RecipeInstruction recipeInstruction = recipeInstructionEntityService.create(recipeForm.getRecipeInstructionForm());
         List<RecipeCategory> recipeCategoryList = recipeForm.getRecipeCategoryId().stream()
                 .map(id -> recipeCategoryDAO.findById(id).get())
                 .collect(Collectors.toList());
