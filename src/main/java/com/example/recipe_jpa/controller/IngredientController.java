@@ -22,6 +22,7 @@ public class IngredientController {
 
 
 
+    //FUNKAR
     @PostMapping("/api/v1/ingredient")
     public ResponseEntity<IngredientDTO>create(@RequestBody IngredientForm form){
 
@@ -30,28 +31,30 @@ public class IngredientController {
 
     }
 
+    //FUNKAR
     @GetMapping("/api/v1/ingredient")
-
     public ResponseEntity<List<IngredientDTO>> find(){
         return ResponseEntity.ok(
                 ingredientService.findAll()
         );
     }
 
-
+    //FUNKAR
     @GetMapping("/api/v1/ingredient/{id}")
     public ResponseEntity<IngredientDTO>findById(@PathVariable ("id") String id){
         return ResponseEntity.ok(ingredientService.findById(id)
         );
     }
 
+    //FUNKAR
     @PutMapping("/api/v1/ingredient/{id}")
     public ResponseEntity<IngredientDTO>update(@PathVariable("id") String id,@RequestBody IngredientForm form){
         return ResponseEntity.ok(ingredientService.update(id,form));
 
     }
-    @DeleteMapping("/api/v1/ingredient/{id}")
 
+    //FUNKAR
+    @DeleteMapping("/api/v1/ingredient/{id}")
     public ResponseEntity<IngredientDTO>delete(@PathVariable("id") String id){
         ingredientService.delete(id);
         return ResponseEntity.noContent().build();

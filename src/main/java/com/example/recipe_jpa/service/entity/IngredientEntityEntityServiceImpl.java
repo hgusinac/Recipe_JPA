@@ -45,7 +45,10 @@ public class IngredientEntityEntityServiceImpl implements IngredientEntityServic
 
     @Override
     public Ingredient update(String id, IngredientForm form) {
-        return null;
+        Ingredient ingredient = findById(id);
+        ingredient.setIngredientName(form.getIngredientName());
+
+        return ingredientDAO.save(ingredient);
     }
 
     @Override

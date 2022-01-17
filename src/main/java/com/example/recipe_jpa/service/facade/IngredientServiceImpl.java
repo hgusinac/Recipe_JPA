@@ -64,7 +64,9 @@ public class IngredientServiceImpl implements com.example.recipe_jpa.service.fac
     @Override
     public IngredientDTO update(String id, IngredientForm form) {
        Ingredient ingredient = ingredientEntityService.update(id,form);
+
        return dtoConverter.toFullIngredientDTO(ingredient);
+
     }
 
     @Override
