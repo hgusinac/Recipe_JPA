@@ -26,8 +26,7 @@ public class RecipeCategoryEntityServiceImpl implements RecipeCategoryEntityServ
     public RecipeCategory create(RecipeCategoryForm recipeCategoryForm) {
         RecipeCategory recipeCategory = new RecipeCategory();
 
-        recipeCategory.setId(recipeCategory.getId());
-        recipeCategory.setCategory(recipeCategory.getCategory());
+        recipeCategory.setCategory(recipeCategoryForm.getCategory());
 
         return recipeCategoryDAO.save(recipeCategory);
     }

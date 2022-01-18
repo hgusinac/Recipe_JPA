@@ -27,7 +27,7 @@ public class RecipeCategoryServiceImpl implements RecipeCategoryService{
         RecipeCategoryDTO recipeCategoryDTO = new RecipeCategoryDTO();
         RecipeCategory recipeCategory = recipeCategoryService.create(recipeCategoryForm);
 
-        recipeCategoryDTO.setId(recipeCategory.getId());
+
         recipeCategoryDTO.setCategory(recipeCategory.getCategory());
 
         return recipeCategoryDTO;

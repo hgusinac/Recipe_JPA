@@ -21,9 +21,10 @@ public class RecipeCategoryController {
     }
 
 
-    //Funkar-dock ingen text på category
+    //Funkar
     @PostMapping("/api/v1/recipeCategory")
     public ResponseEntity<RecipeCategoryDTO> create(@RequestBody RecipeCategoryForm form){
+
 
         RecipeCategoryDTO categoryDTO = recipeCategoryService.create(form);
         return ResponseEntity.status(201).body(categoryDTO);
