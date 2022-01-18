@@ -5,10 +5,11 @@ import com.example.recipe_jpa.model.entities.RecipeCategory;
 
 import java.util.List;
 
-public interface RecipeCategoryEntityService {
+public interface RecipeCategoryEntityService  {
 
     RecipeCategory create (RecipeCategoryForm recipeCategoryForm);
     RecipeCategory findById(String id);
     List<RecipeCategory> findAll();
+    RecipeCategory update(String id,RecipeCategoryForm form);
     void delete(String id);
 }

@@ -1,15 +1,19 @@
-package com.example.recipe_jpa.model.DTO.form;
-
+package com.example.recipe_jpa.model.DTO.view;
 
 import java.io.Serializable;
 
-public class RecipeCategoryForm implements Serializable {
+public class RecipeCategoryDTO implements Serializable {
 
     private String id;
-
     private String category;
 
-    public RecipeCategoryForm() {
+
+    public RecipeCategoryDTO() {
+    }
+
+    public RecipeCategoryDTO(String id, String category) {
+        this.id = id;
+        this.category = category;
     }
 
     public String getId() {

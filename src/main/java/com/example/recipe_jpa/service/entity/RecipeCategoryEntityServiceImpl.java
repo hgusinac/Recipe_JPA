@@ -13,7 +13,10 @@ import java.util.Optional;
 @Transactional
 public class RecipeCategoryEntityServiceImpl implements RecipeCategoryEntityService {
 
-   public final RecipeCategoryDAO recipeCategoryDAO;
+
+
+
+    public final RecipeCategoryDAO recipeCategoryDAO;
 
     public RecipeCategoryEntityServiceImpl(RecipeCategoryDAO recipeCategoryDAO) {
         this.recipeCategoryDAO = recipeCategoryDAO;
@@ -39,6 +42,15 @@ public class RecipeCategoryEntityServiceImpl implements RecipeCategoryEntityServ
     public List<RecipeCategory> findAll() {
         return recipeCategoryDAO.findAll();
     }
+
+    @Override
+    public RecipeCategory update(String id, RecipeCategoryForm form) {
+        RecipeCategory recipeCategory = findById(id);
+        recipeCategory.setCategory(form.getCategory());
+
+        return recipeCategoryDAO.save(recipeCategory);
+    }
+
 
     @Override
     public void delete(String id) {
