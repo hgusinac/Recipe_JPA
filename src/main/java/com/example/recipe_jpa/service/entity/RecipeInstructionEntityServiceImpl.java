@@ -23,18 +23,22 @@ public class RecipeInstructionEntityServiceImpl implements RecipeInstructionEnti
 
     @Override
     public RecipeInstruction create(RecipeInstructionForm recipeInstructionForm) {
+        if(recipeInstructionForm == null){
+            throw new IllegalArgumentException("RecipeInstructionForm was null");
+        }
+
         RecipeInstruction recipeInstruction = new RecipeInstruction();
 
-        recipeInstruction.setId(recipeInstruction.getId());
-        recipeInstruction.setInstructions(recipeInstruction.getInstructions());
+        recipeInstruction.setId(recipeInstructionForm.getId());
+        recipeInstruction.setInstructions(recipeInstructionForm.getInstructions());
 
         return recipeInstructionDAO.save(recipeInstruction);
     }
 
     @Override
     public RecipeInstruction findById(String id) {
-        Optional<RecipeInstruction> recipeInstruction = recipeInstructionDAO.findById(id);
-        return  recipeInstruction.orElseThrow(()-> new RuntimeException("recipe instruction was not found"));
+        return recipeInstructionDAO.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("Could not find RecipeInstruction whit id " + id));
     }
 
     @Override
@@ -43,8 +47,18 @@ public class RecipeInstructionEntityServiceImpl implements RecipeInstructionEnti
     }
 
     @Override
+    public RecipeInstruction update(String id, RecipeInstructionForm recipeInstructionForm) {
+       RecipeInstruction recipeInstruction = findById(id);
+
+       recipeInstruction.setInstructions(recipeInstructionForm.getInstructions());
+
+       return recipeInstructionDAO.save(recipeInstruction);
+    }
+
+    @Override
     public void delete(String id) {
-        recipeInstructionDAO.deleteById(id);
+        RecipeInstruction recipeInstruction = findById(id);
+        recipeInstructionDAO.delete(recipeInstruction);
 
     }
 }

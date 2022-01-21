@@ -22,8 +22,8 @@ public class RecipeIngredientEntityServiceImpl implements RecipeIngredientEntity
 
     @Override
     public RecipeIngredient create(RecipeIngredientForm recipeIngredientForm) {
+        if(recipeIngredientForm == null) throw new IllegalArgumentException("RecipeIngredientForm was null");
         RecipeIngredient recipeIngredient = new RecipeIngredient();
-
         recipeIngredient.setId(recipeIngredient.getId());
         recipeIngredient.setAmount(recipeIngredient.getAmount());
         recipeIngredient.setMeasurment(recipeIngredient.getMeasurment());
@@ -43,8 +43,24 @@ public class RecipeIngredientEntityServiceImpl implements RecipeIngredientEntity
     }
 
     @Override
-    public void delete(String id) {
+    public RecipeIngredient update(String id, RecipeIngredientForm recipeIngredientForm) {
 
-        recipeIngredientDAO.deleteById(id);
+        RecipeIngredient recipeIngredient=findById(id);
+        recipeIngredient.setAmount(recipeIngredientForm.getAmount());
+        recipeIngredient.setMeasurment(recipeIngredientForm.getMeasurment());
+        recipeIngredient = recipeIngredientDAO.save(recipeIngredient);
+
+        return recipeIngredient;
     }
+
+
+
+    @Override
+    public void delete(String id) {
+        RecipeIngredient recipeIngredient = findById(id);
+        recipeIngredient.setIngredient(null);
+        recipeIngredientDAO.delete(recipeIngredient);
+    }
+
+
 }

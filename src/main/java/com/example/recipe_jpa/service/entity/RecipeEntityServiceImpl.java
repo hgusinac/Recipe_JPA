@@ -35,24 +35,16 @@ public class RecipeEntityServiceImpl implements RecipeEntityService {
 
     @Override
     public Recipe create(RecipeForm recipeForm) {
+        if(recipeForm == null){
+            throw new IllegalArgumentException("RecipeForm was null.");
+        }
         Recipe recipe = new Recipe();
-
-        RecipeInstruction recipeInstruction = recipeInstructionEntityService.create(recipeForm.getRecipeInstructionForm());
-        List<RecipeCategory> recipeCategoryList = recipeForm.getRecipeCategoryId().stream()
-                .map(id -> recipeCategoryDAO.findById(id).get())
-                .collect(Collectors.toList());
-
-        List<RecipeIngredient> recipeIngredientList = recipeForm.getRecipeIngredientId().stream()
-                .map(id -> recipeIngredientDAO.findById(id).get())
-                .collect(Collectors.toList());
-
-        recipe.setId(recipeForm.getId());
         recipe.setRecipeName(recipeForm.getRecepeName());
-        recipe.setRecipeInstruction(recipeInstruction);
-        recipe.setCategories(recipeCategoryList);
-        recipe.setRecipeIngredients(recipeIngredientList);
-
+        recipe.setRecipeInstruction(recipeInstructionEntityService.create(
+                recipeForm.getRecipeInstructionForm()
+        ));
         return recipeDAO.save(recipe);
+
 
     }
 
@@ -68,8 +60,21 @@ public class RecipeEntityServiceImpl implements RecipeEntityService {
     }
 
     @Override
+    public Recipe update(String id, RecipeForm form) {
+        Recipe recipe = findById(id);
+        recipe.setRecipeName(form.getRecepeName());
+        recipe.setRecipeInstruction(recipeInstructionEntityService.create(form.getRecipeInstructionForm()));
+
+        return recipeDAO.save(recipe);
+    }
+
+    @Override
     public void delete(String id) {
         if (id.isEmpty()) throw new IllegalArgumentException("id is not assign");
+    Recipe recipe = findById(id);
+    recipe.setRecipeIngredients(null);
+    recipe.setCategories(null);
+    recipe.setRecipeInstruction(null);
     recipeDAO.deleteById(id);
     }
 }

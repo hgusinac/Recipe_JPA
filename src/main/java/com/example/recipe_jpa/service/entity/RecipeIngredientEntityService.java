@@ -5,13 +5,7 @@ import com.example.recipe_jpa.model.entities.RecipeIngredient;
 
 import java.util.List;
 
-public interface RecipeIngredientEntityService {
-    RecipeIngredient create(RecipeIngredientForm recipeIngredientForm);
+public interface RecipeIngredientEntityService extends GenericEntityService<RecipeIngredient,RecipeIngredientForm>{
 
-    RecipeIngredient findById(String id);
-
-    List<RecipeIngredient> findAll();
-
-    void delete(String id);
 
 }

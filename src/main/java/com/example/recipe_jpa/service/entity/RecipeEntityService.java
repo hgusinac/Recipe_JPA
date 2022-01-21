@@ -5,11 +5,7 @@ import com.example.recipe_jpa.model.entities.Recipe;
 
 import java.util.List;
 
-public interface RecipeEntityService {
+public interface RecipeEntityService extends GenericEntityService<Recipe,RecipeForm> {
 
-    Recipe create (RecipeForm recipeForm);
-    Recipe findById(String id);
-    List<Recipe> findAll();
-    void delete(String id);
 
 }
